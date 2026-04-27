@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+        th { background-color: #f2f2f2; }
+        .total { font-weight: bold; font-size: 1.2em; margin-top: 1em; }
+        .actions a { margin-right: 10px; }
+        a.button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <hr>
+    <h2>All Expenses</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="expense : ${listExpenses}">
+                <td th:text="${expense.date}"></td>
+                <td th:text="${expense.description}"></td>
+                <td th:text="${#numbers.formatCurrency(expense.amount)}"></td>
+                <td class="actions">
+                    <a th:href="@{/showFormForUpdate/{id}(id=${expense.id})}">Update</a>
+                    <a th:href="@{/deleteExpense/{id}(id=${expense.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="total" th:text="'Total: ' + ${#numbers.formatCurrency(totalExpenses)}"></div>
+    <a href="/showNewExpenseForm" class="button">Add New Expense</a>
+</body>
+</html>
