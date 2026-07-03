@@ -25,3 +25,12 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: AzureRmWebAppDeployment@5
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(1)(3a9ba873-9824-4430-ab31-d7cf59f97720)'
+    appType: 'webAppLinux'
+    WebAppName: 'webexpense'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'
+    RuntimeStack: 'JAVA|17-java17'
+    DeploymentTypeLinux: 'oneDeploy'
