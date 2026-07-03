@@ -12,7 +12,7 @@ pool:
 steps:
 - task: JavaToolInstaller@1
   inputs:
-    versionSpec: '1.17'
+    versionSpec: '17'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 - task: Maven@3
