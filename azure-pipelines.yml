@@ -31,6 +31,6 @@ steps:
     azureSubscription: 'Azure subscription 1(1)(3a9ba873-9824-4430-ab31-d7cf59f97720)'
     appType: 'webAppLinux'
     WebAppName: 'webexpense'
-    packageForLinux: '$(System.ArtifactsDirectory)/drop/Expensetracking-0.0.1-SNAPSHOT.jar'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/target/Expensetracking-0.0.1-SNAPSHOT.jar'
     RuntimeStack: 'JAVA|17-java17'
     DeploymentTypeLinux: 'oneDeploy'
