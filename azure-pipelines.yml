@@ -34,3 +34,8 @@ steps:
     packageForLinux: '$(System.DefaultWorkingDirectory)/target/Expensetracking-0.0.1-SNAPSHOT.jar'
     RuntimeStack: 'JAVA|17-java17'
     DeploymentTypeLinux: 'oneDeploy'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'artifact'
+    publishLocation: 'pipeline'
